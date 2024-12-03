@@ -26,6 +26,59 @@ if ($driveLetter) {
 } else {
     Write-Host "Failed to mount the ISO."
 }
+Write-host "Creating xml file"
+# Define the path where the configuration file will be saved
+$configFilePath = "C:\temp\configuration.xml"  # Replace with your desired path
+
+# Create the XML structure
+[xml]$xmlContent = New-Object -TypeName System.Xml.XmlDocument
+
+# Create the root <Configuration> element
+$configurationElement = $xmlContent.CreateElement("Configuration")
+
+# Create the <Add> element with attributes
+$addElement = $xmlContent.CreateElement("Add")
+$addElement.SetAttribute("OfficeClientEdition", "64")
+$addElement.SetAttribute("Channel", "Monthly")
+
+# Create the <Product> element with nested <Language> element
+$productElement = $xmlContent.CreateElement("Product")
+$productElement.SetAttribute("ID", "O365ProPlusRetail")
+$languageElement = $xmlContent.CreateElement("Language")
+$languageElement.SetAttribute("ID", "en-us")
+
+# Append the <Language> element to the <Product> element
+$productElement.AppendChild($languageElement)
+
+# Append the <Product> element to the <Add> element
+$addElement.AppendChild($productElement)
+
+# Append the <Add> element to the root <Configuration> element
+$configurationElement.AppendChild($addElement)
+
+# Create the <Display> element with attributes
+$displayElement = $xmlContent.CreateElement("Display")
+$displayElement.SetAttribute("Level", "None")
+$displayElement.SetAttribute("AcceptEULA", "TRUE")
+
+# Append the <Display> element to the root <Configuration> element
+$configurationElement.AppendChild($displayElement)
+
+# Create the <Property> element
+$propertyElement = $xmlContent.CreateElement("Property")
+$propertyElement.SetAttribute("Name", "ForceAppShutdown")
+$propertyElement.SetAttribute("Value", "TRUE")
+
+# Append the <Property> element to the root <Configuration> element
+$configurationElement.AppendChild($propertyElement)
+
+# Append the <Configuration> element to the document
+$xmlContent.AppendChild($configurationElement)
+
+# Save the XML content to the file
+$xmlContent.Save($configFilePath)
+
+Write-Host "Configuration file created at: $configFilePath"
 
 Write-host "Office installation"
 
