@@ -89,7 +89,7 @@ if (Test-Path $officeSetupPath) {
     Write-Host "Starting Office installation..."
 
     # Run the setup.exe with silent installation arguments
-    Start-Process -FilePath $officeSetupPath -ArgumentList "/quiet", "/norestart" -Wait
+    Start-Process -FilePath $setupPath -ArgumentList "/configure $configFilePath" -Wait
 
     Write-Host "Office installation completed silently."
 } else {
