@@ -26,3 +26,20 @@ if ($driveLetter) {
 } else {
     Write-Host "Failed to mount the ISO."
 }
+
+Write-host "Office installation"
+
+$officeSetupPath = "f:/setup.exe"  
+
+# Check if the setup.exe exists
+if (Test-Path $officeSetupPath) {
+    Write-Host "Starting Office installation..."
+
+    # Run the setup.exe with silent installation arguments
+    Start-Process -FilePath $officeSetupPath -ArgumentList "/quiet", "/norestart" -Wait
+
+    Write-Host "Office installation completed silently."
+} else {
+    Write-Host "Setup file not found: $officeSetupPath"
+}
+
