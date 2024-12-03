@@ -1,9 +1,9 @@
 <Configuration>
-  <Add OfficeClientEdition="64" Channel="Monthly">
-    <Product ID="O365ProPlusRetail">
+  <Add OfficeClientEdition="64" Channel="PerpetualVL2016">
+    <Product ID="Standard2016Volume">
       <Language ID="en-us" />
     </Product>
   </Add>
   <Display Level="None" AcceptEULA="TRUE" />
-  <Property Name="ForceAppShutdown" Value="TRUE" />
+  <Property Name="AUTOACTIVATE" Value="1" />
 </Configuration>
