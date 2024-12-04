@@ -34,4 +34,4 @@ if ($driveLetter) {
 
 $installerPath = "E:\setup.exe"
 $licenseKey = "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
-$logFile = "C:\path\to\logfile.txt"
+$logFile = "C:\temp\logfile.txt"
