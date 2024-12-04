@@ -29,6 +29,9 @@ if ($driveLetter) {
 }
 
 
+# Create admin.msp file 
+#.\setup.exe /admin
+
 $installerPath = "E:\setup.exe"
 $licenseKey = "XXXXX-XXXXX-XXXXX-XXXXX-XXXXX"
 $logFile = "C:\path\to\logfile.txt"
